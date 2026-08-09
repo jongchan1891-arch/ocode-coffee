@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jongchan1891-arch.github.io/ocode-coffee/sitemap.xml
+Sitemap: https://ocord.store/sitemap.xml
