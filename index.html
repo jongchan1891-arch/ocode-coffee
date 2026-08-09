@@ -31,7 +31,7 @@
 </style>
 </head>
 <body>
-<div class="wd-oc" style="max-width:840px;margin:0 auto;font-family:'Wanted Sans','Pretendard','Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;color:#fff3ea;line-height:1.75;background:#e35205;padding:clamp(20px,4vw,40px) clamp(16px,4vw,32px);border-radius:18px;">
+<div class="wd-oc" style="max-width:840px;margin:0 auto;font-family:'Wanted Sans','Pretendard','Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;color:#fff3ea;line-height:1.75;background:#e35205;padding:clamp(20px,4vw,40px) clamp(16px,4vw,32px);border-radius:18px;position:relative;overflow:hidden;">
 <style>
 .wd-oc *{box-sizing:border-box;}
 .wd-oc .sec{scroll-margin-top:80px;}
@@ -59,6 +59,13 @@
 .wd-oc .oc-cta.dark{background:#1f2937;box-shadow:0 8px 20px rgba(31,41,55,.25);}
 .wd-oc .oc-cta.blue{background:#1D74FF;box-shadow:0 8px 20px rgba(29,116,255,.3);}
 .wd-oc .hero{position:relative;background:linear-gradient(135deg,#e35205,#f3722c);border-radius:24px;padding:clamp(34px,7vw,54px) clamp(24px,5vw,44px);color:#fff;margin-bottom:1.6em;overflow:hidden;}
+.wd-oc .hero.hero-photo{padding:0;min-height:clamp(360px,54vw,520px);display:flex;align-items:flex-start;overflow:hidden;isolation:isolate;}
+.wd-oc .hero.hero-photo::before{content:'';position:absolute;inset:0;z-index:0;background:url('https://tistory1.daumcdn.net/tistory/7546904/skin/images/menu_05.jpg') center/cover no-repeat;filter:brightness(1.14) saturate(1.28) contrast(1.04);}
+.wd-oc .hero.hero-photo::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(20,9,3,.34) 0%,rgba(20,9,3,.08) 34%,rgba(20,9,3,0) 62%);}
+.wd-oc .hero.hero-photo .hero-inner{position:relative;z-index:2;}
+.wd-oc .hero.hero-photo .hero-inner{padding:clamp(26px,5vw,44px) clamp(24px,5vw,44px);text-shadow:0 2px 10px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.5);}
+.wd-oc .hero-logo{display:block;height:clamp(52px,10vw,68px);width:auto;margin:0 0 16px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35));}
+.wd-oc .hero.hero-photo p{color:#fff;}
 .wd-oc .hero .en{font-size:12px;letter-spacing:.22em;font-weight:800;color:#ffe3cf;margin-bottom:16px;}
 .wd-oc .hero h1{font-size:clamp(28px,7vw,42px);font-weight:900;letter-spacing:-.03em;margin:0 0 .4em;color:#fff;line-height:1.18;}
 .wd-oc .hero h1 .y{color:#ffd77a;}
@@ -97,17 +104,129 @@
 #oc-float .oc-beat-txt{display:inline-block; animation:ocGlow 1.6s ease-in-out infinite; color:#fff;}
 #oc-float.oc-beat:hover{animation-play-state:paused;}
 @media (prefers-reduced-motion:reduce){#oc-float.oc-beat,#oc-float .oc-beat-txt{animation:none;}}
+
+/* ===== REVIEWS ===== */
+.wd-oc #s-reviews .oc-rv-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:0 0 18px;}
+.wd-oc .oc-rv-score{display:flex;align-items:center;gap:8px;}
+.wd-oc .oc-rv-score>b{font-size:30px;color:#e35205;line-height:1;}
+.wd-oc .oc-rv-stars{color:#ffb300;letter-spacing:2px;font-size:18px;}
+.wd-oc .oc-rv-count{font-size:13px;color:#6b7480;}
+.wd-oc .oc-rv-count b{color:#2a1508;}
+.wd-oc .oc-rv-kw{display:flex;flex-wrap:wrap;gap:7px;}
+.wd-oc .oc-rv-kw span{background:#fff3e6;color:#b4501c;border:1px solid #ffd7ad;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;}
+.wd-oc .oc-rv-list{display:grid;grid-template-columns:1fr;gap:14px;transition:opacity .5s ease;}.wd-oc .oc-rv-list.oc-rv-fade{opacity:0;}
+.wd-oc .oc-rv-card{background:#fff;border:1px solid #eef1f5;border-radius:16px;padding:18px 18px 16px;box-shadow:0 6px 22px rgba(17,24,39,.05);display:flex;flex-direction:column;gap:8px;}
+.wd-oc .oc-rv-card .top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.wd-oc .oc-rv-card .who{font-weight:800;color:#2a1508;font-size:13.5px;}
+.wd-oc .oc-rv-card .st{color:#ffb300;font-size:13px;letter-spacing:1px;}
+.wd-oc .oc-rv-card .menu{display:inline-block;background:#2a1508;color:#ffd77a;font-size:11px;font-weight:700;border-radius:6px;padding:3px 9px;width:fit-content;}
+.wd-oc .oc-rv-card .txt{color:#3f4756;font-size:14px;line-height:1.72;margin:0;}
+@media (max-width:640px){.wd-oc .oc-rv-list{grid-template-columns:1fr;}}
+
+/* 리뷰 섹션 primary 버튼: 오렌지 배경에 묻히지 않게 흰 박스 */
+.wd-oc #s-reviews .oc-cta:not(.dark){background:#fff;color:#e35205 !important;border:2px solid #ffd7ad;box-shadow:0 8px 20px rgba(0,0,0,.12);}
+.wd-oc #s-reviews .oc-cta:not(.dark):hover{background:#fff7f0;border-color:#e35205;box-shadow:0 12px 26px rgba(227,82,5,.28);}
+
+
+/* ===== 4대 카드(관심사형) ===== */
+.wd-oc .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:1.4em 0 1.2em;}
+.wd-oc .pillar{display:flex;flex-direction:column;gap:8px;padding:20px 18px;border-radius:18px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);color:#fff;text-decoration:none;
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease;backdrop-filter:blur(2px);}
+.wd-oc .pillar:hover{transform:translateY(-4px);background:rgba(255,255,255,.18);box-shadow:0 14px 30px rgba(0,0,0,.22);}
+.wd-oc .pillar .ic{font-size:28px;line-height:1;}
+.wd-oc .pillar .pt{font-size:16px;font-weight:800;letter-spacing:-.01em;}
+.wd-oc .pillar .ps{font-size:12.5px;color:#ffe3cf;line-height:1.5;}
+@media (max-width:720px){.wd-oc .pillars{grid-template-columns:repeat(2,1fr);}}
+
+/* ===== 시그니처 가로 슬라이더(회전 초밥) ===== */
+.wd-oc .sig-slider{position:relative;margin:0 0 1.2em;}
+.wd-oc .sig-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;padding:4px 2px 12px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.wd-oc .sig-track::-webkit-scrollbar{display:none;}
+.wd-oc .sig-card{flex:0 0 auto;width:min(72vw,240px);scroll-snap-align:start;text-decoration:none;
+  background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.16);
+  display:flex;flex-direction:column;transition:transform .22s ease,box-shadow .22s ease;}
+.wd-oc .sig-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.24);}
+.wd-oc .sig-thumb{height:150px;position:relative;background-size:cover;background-position:center;}
+.wd-oc .sig-emoji{height:150px;display:flex;align-items:center;justify-content:center;font-size:60px;
+  background:linear-gradient(135deg,#fff2e6,#ffe0c2);}
+.wd-oc .sig-body{padding:14px 15px 16px;}
+.wd-oc .sig-name{font-size:15.5px;font-weight:800;color:#2a1508;margin:0 0 3px;letter-spacing:-.01em;}
+.wd-oc .sig-desc{font-size:12.5px;color:#6b5b4d;margin:0;line-height:1.5;}
+.wd-oc .sig-nav{position:absolute;top:75px;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;
+  border:none;cursor:pointer;background:#2a1508;color:#ffd77a;font-size:20px;font-weight:800;line-height:1;
+  box-shadow:0 6px 16px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;z-index:3;opacity:.92;}
+.wd-oc .sig-nav:hover{opacity:1;}
+.wd-oc .sig-prev{left:-6px;} .wd-oc .sig-next{right:-6px;}
+@media (max-width:640px){.wd-oc .sig-nav{display:none;}}
 </style>
 
 <!-- HERO -->
-<div class="hero oc-reveal">
-  <img src="logo.svg" alt="오:코드커피 로고" style="display:block;height:64px;width:auto;margin:0 0 18px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.18));">
-  <div class="en">O:CORD COFFEE · 양재삼호물산점</div>
-  <h1>좋은 커피,<br>좋은 시간을 <span class="y">선물합니다</span></h1>
-  <p>More than just coffee, it&#39;s an experience.<br>양재천 곁, 아침 07:30에 문을 여는 작은 카페 이야기.</p>
+<div class="hero hero-photo oc-reveal">
+  <div class="hero-inner">
+    <img src="logo.svg" alt="오:코드커피 로고" class="hero-logo">
+    <div class="en">O:CORD COFFEE · 양재삼호물산점</div>
+    <h1>좋은 커피,<br>좋은 시간을 <span class="y">선물합니다</span></h1>
+    <p>More than just coffee, it&#39;s an experience.<br>양재천 곁, 아침 07:30에 문을 여는 작은 카페 이야기.</p>
+  </div>
 </div>
 
-<figure class="oc-reveal"><img src="https://tistory1.daumcdn.net/tistory/7546904/skin/images/menu_05.jpg" alt="오:코드커피 양재삼호물산점 매장"><figcaption>오:코드커피 양재삼호물산점 매장</figcaption></figure>
+<!-- 4대 카드(관심사형) -->
+<div class="pillars oc-reveal">
+  <a class="pillar" href="#s3">
+    <span class="ic">☕</span>
+    <span class="pt">시그니처 커피</span>
+    <span class="ps">오:코드 크림커피 · 밀크티 · 에이드</span>
+  </a>
+  <a class="pillar" href="#s4">
+    <span class="ic">🍪</span>
+    <span class="pt">수제 디저트</span>
+    <span class="ps">사브레 · 에그타르트 · 티라미수</span>
+  </a>
+  <a class="pillar" href="#s1">
+    <span class="ic">🧡</span>
+    <span class="pt">브랜드 스토리</span>
+    <span class="ps">스위치와 바코드에서 시작된 이야기</span>
+  </a>
+  <a class="pillar" href="#s6">
+    <span class="ic">📍</span>
+    <span class="pt">오시는 길</span>
+    <span class="ps">양재천 곁 · 아침 07:30 오픈</span>
+  </a>
+</div>
+
+<!-- 시그니처 가로 슬라이더 -->
+<div class="sig-slider oc-reveal">
+  <button class="sig-nav sig-prev" type="button" aria-label="이전">‹</button>
+  <div class="sig-track" id="sigTrack">
+    <a class="sig-card" href="#s3">
+      <div class="sig-thumb" style="background-image:url('https://tistory1.daumcdn.net/tistory/7546904/skin/images/menu_08.jpg');"></div>
+      <div class="sig-body"><p class="sig-name">오:코드 커피</p><p class="sig-desc">리스트레토 위에 시그니처 크림을 얹은 크림커피</p></div>
+    </a>
+    <a class="sig-card" href="https://smartstore.naver.com/sable13" target="_blank" rel="noopener">
+      <div class="sig-emoji">🍪</div>
+      <div class="sig-body"><p class="sig-name">수제 사브레</p><p class="sig-desc">좋은 버터로 구운 시그니처 사브레 · 선물 포장</p></div>
+    </a>
+    <a class="sig-card" href="#s3">
+      <div class="sig-emoji">🍵</div>
+      <div class="sig-body"><p class="sig-name">프리미엄 밀크티</p><p class="sig-desc">파우더 없이 잎차로 우려낸 부드러운 한 잔</p></div>
+    </a>
+    <a class="sig-card" href="https://smartstore.naver.com/sable13" target="_blank" rel="noopener">
+      <div class="sig-emoji">🥚</div>
+      <div class="sig-body"><p class="sig-name">에그타르트</p><p class="sig-desc">겉은 바삭, 속은 촉촉한 직접 구운 타르트</p></div>
+    </a>
+    <a class="sig-card" href="https://smartstore.naver.com/sable13" target="_blank" rel="noopener">
+      <div class="sig-emoji">🍰</div>
+      <div class="sig-body"><p class="sig-name">티라미수</p><p class="sig-desc">진한 풍미로 마무리하는 디저트</p></div>
+    </a>
+    <a class="sig-card" href="#s3">
+      <div class="sig-emoji">🍋</div>
+      <div class="sig-body"><p class="sig-name">오:코드 에이드</p><p class="sig-desc">상큼함이 필요한 날을 위한 시그니처 에이드</p></div>
+    </a>
+  </div>
+  <button class="sig-nav sig-next" type="button" aria-label="다음">›</button>
+</div>
 
 <!-- AWARD -->
 <div class="award oc-reveal">
@@ -150,8 +269,6 @@
   </div>
 </div>
 
-
-
 <div class="wd-oc" style="max-width:840px;margin:0 auto;font-family:'Wanted Sans','Pretendard','Noto Sans KR',sans-serif;">
 <div class="sec oc-reveal" id="s4" style="margin-top:36px;">
   <div class="kicker"><span class="num" style="background:#2a1508;color:#ffd77a;">04</span> DESSERT</div>
@@ -172,6 +289,27 @@
   <h2>한 잔에 담는 건, 결국 마음입니다</h2>
   <div class="card" style="background:linear-gradient(135deg,#1f2937,#111827);border:none;">
     <p style="margin:0;color:#e5e9f0;font-size:clamp(15px,3.4vw,16.5px);line-height:1.95;">한 잔의 커피, 쿠키 하나에도 <b style="color:#fff;">손님을 생각하는 마음</b>을 담습니다. 때로는 사장이 직접 배달을 나가고, 디카페인 한 잔까지 허투루 내리지 않는 이유예요. &ldquo;항상 맛있게 먹고 있다&rdquo;는 그 말 한마디가 저희를 계속 나아가게 합니다.<br><br>오늘도 <b style="color:#ffd77a;">좋은 커피, 좋은 시간</b>을 준비해두고 기다리겠습니다.</p>
+  </div>
+</div>
+
+
+<!-- REVIEWS -->
+<div class="sec oc-reveal" id="s-reviews" style="margin-top:36px;">
+  <div class="kicker"><span class="num" style="background:#2a1508;color:#ffd77a;">⭐</span> REVIEWS</div>
+  <h2>먼저 맛본 분들의 <span class="y">진짜 후기</span></h2>
+  <div class="oc-rv-head">
+    <div class="oc-rv-score">
+      <b id="oc-rv-rating">4.9</b><span class="oc-rv-stars">★★★★★</span>
+      <span class="oc-rv-count">네이버 리뷰 <b id="oc-rv-count">13</b></span>
+    </div>
+    <div class="oc-rv-kw" id="oc-rv-kw"></div>
+  </div>
+  <div class="oc-rv-list" id="oc-rv-list">
+    <p style="color:#3f4756;font-size:14px;margin:0;">후기를 불러오는 중…</p>
+  </div>
+  <div class="btnrow" style="margin-top:16px;">
+    <a class="oc-cta" href="https://smartstore.naver.com/sable13" target="_blank" rel="noopener">네이버 스토어에서 후기 더보기</a>
+    <a class="oc-cta dark" href="https://map.naver.com/p/entry/place/1188341305?c=12.97,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202608091350%26locale%3Dko%26svcName%3Dmap_pcv5" target="_blank" rel="noopener">네이버 지도 방문자 리뷰</a>
   </div>
 </div>
 
@@ -232,5 +370,63 @@
 })();
 </script>
 
+<script>
+/* REVIEWS: reviews.json 로드 → 카드 렌더 (실패 시 조용히 스킵) */
+(function(){
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function stars(n){n=Math.max(0,Math.min(5,n||5));return '★'.repeat(n)+'☆'.repeat(5-n);}
+  function render(d){
+    try{
+      var r=document.getElementById('oc-rv-rating'); if(r&&d.rating)r.textContent=d.rating;
+      var c=document.getElementById('oc-rv-count'); if(c&&d.count)c.textContent=d.count;
+      var kw=document.getElementById('oc-rv-kw');
+      if(kw&&Array.isArray(d.keywords)){kw.innerHTML=d.keywords.map(function(k){return '<span>'+esc(k)+'</span>';}).join('');}
+      var list=document.getElementById('oc-rv-list');
+      if(list&&Array.isArray(d.items)&&d.items.length){
+        var items=d.items.slice();
+        function cardHTML(it){
+          return '<div class="oc-rv-card">'+
+            '<div class="top"><span class="who">'+esc(it.name||'고객님')+'</span><span class="st">'+stars(it.stars)+'</span></div>'+
+            (it.menu?'<span class="menu">'+esc(it.menu)+'</span>':'')+
+            '<p class="txt">'+esc(it.text||'')+'</p>'+
+          '</div>';
+        }
+        function pickTwo(){
+          if(items.length<=2) return items.slice(0,2);
+          var a=Math.floor(Math.random()*items.length);
+          var b; do{ b=Math.floor(Math.random()*items.length);}while(b===a);
+          return [items[a], items[b]];
+        }
+        function paint(){ list.innerHTML=pickTwo().map(cardHTML).join(''); }
+        paint();
+        if(items.length>2){
+          setInterval(function(){
+            list.classList.add('oc-rv-fade');
+            setTimeout(function(){ paint(); list.classList.remove('oc-rv-fade'); }, 500);
+          }, 4000);
+        }
+      }
+    }catch(e){}
+  }
+  fetch('reviews.json',{cache:'no-store'}).then(function(res){return res.json();}).then(render).catch(function(){
+    var list=document.getElementById('oc-rv-list');
+    if(list){list.innerHTML='<p style=\"color:#6b7480;font-size:14px;margin:0;\">네이버 스토어에서 실제 후기를 확인해 보세요 →</p>';}
+  });
+})();
+</script>
+
+<!-- 떠다니는 반짝 쿠키 -->
+
+<script>
+(function(){
+  var track=document.getElementById('sigTrack'); if(!track) return;
+  var slider=track.closest('.sig-slider');
+  var step=254;
+  function go(dir){ track.scrollBy({left:dir*step, behavior:'smooth'}); }
+  var prev=slider.querySelector('.sig-prev'), next=slider.querySelector('.sig-next');
+  if(prev) prev.addEventListener('click',function(){go(-1);});
+  if(next) next.addEventListener('click',function(){go(1);});
+})();
+</script>
 </body>
 </html>
